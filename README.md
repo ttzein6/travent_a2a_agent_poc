@@ -21,14 +21,13 @@ Create a `.env` file in the root directory with the following variables:
 
 ```env
 GOOGLE_API_KEY=your_google_api_key_here
-GOOGLE_SEARCH_ENGINE_ID=your_custom_search_engine_id
 TRAVEL_PLANNING_AGENT_PORT=10002
 SEARCH_AGENT_PORT=10003
 ```
 
 Required environment variables:
 - `GOOGLE_API_KEY`: Your Google API key for both Gemini and Custom Search
-- `GOOGLE_SEARCH_ENGINE_ID`: Your Google Custom Search Engine ID
+
 
 Optional environment variables:
 - `GOOGLE_GENAI_USE_VERTEXAI=TRUE` (if using Vertex AI instead of API key)
@@ -151,7 +150,7 @@ The Host Agent will automatically discover and connect to the other agents runni
 - **Input**: Text/plain
 - **Output**: Text/plain, text/event-stream
 - **Port**: 10003
-- **Tools**: Google Custom Search API
+- **Tools**: Google Search Tool
 - **Capabilities**:
   - Real-time flight and hotel pricing
   - Availability checks for accommodations and activities
@@ -180,30 +179,13 @@ Once all agents are running, you can interact with the travel system by sending 
 This project uses:
 - **A2A SDK** (v0.2.5) for agent-to-agent communication
 - **Google ADK** (v1.3.0) for agent development
-- **Google Custom Search API** for real-time travel information
 - **Uvicorn** for ASGI server
 - **Python-dotenv** for environment variable management
 - **HTTPX** for HTTP client functionality
 
-## Setup Google Custom Search
-
-To enable the search agent functionality:
-
-1. **Create a Google Custom Search Engine**:
-   - Visit [Google Custom Search](https://cse.google.com/)
-   - Create a new search engine
-   - Configure it to search the entire web
-   - Get your Search Engine ID
-
-2. **Enable Custom Search API**:
-   - Go to [Google Cloud Console](https://console.cloud.google.com/)
-   - Enable the Custom Search API
-   - Use your existing Google API key
 
 ## Troubleshooting
 
-- Ensure all required environment variables are set (especially `GOOGLE_SEARCH_ENGINE_ID`)
-- Make sure each agent is running on its designated port
-- Check that the Google API key has permissions for both Gemini and Custom Search APIs  
+- Ensure all required environment variables are set 
+- Make sure each agent is running on its designated port 
 - Verify that ports 10002 and 10003 are available
-- Test Google Custom Search API access independently if search functionality fails
